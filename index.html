@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#16241a">
-<title>Pup Dash 🐾 — Luna vs Dolly</title>
+<title>ZOOMIES! ⚡ Luna vs Dolly</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐶</text></svg>">
 <style>
   :root {
@@ -15,7 +15,7 @@
   }
   html, body {
     margin: 0; padding: 0; height: 100%;
-    background: #131f12;
+    background: #20150c;
     overflow: hidden;
     overscroll-behavior: none;
     -webkit-user-select: none; user-select: none;
@@ -36,10 +36,10 @@
 'use strict';
 
 /* ============================================================
-   PUP DASH — Luna (beagle) vs Dolly (weimaraner).
-   Mobile-only portrait racer built on the Dachshund Dash engine
-   with per-breed body shapes. Logical width fixed at 540;
-   logical height stretches between safe-area insets.
+   ZOOMIES! — Luna (lemon beagle) vs Dolly (weimaraner).
+   Mobile-only portrait racer at golden hour, with per-breed
+   body shapes. Logical width fixed at 540; logical height
+   stretches between safe-area insets.
    ============================================================ */
 
 const canvas = document.getElementById('game');
@@ -162,29 +162,29 @@ const LANES = {
 };
 
 const ROSTER = [
-  { id: 'luna', name: 'LUNA',   // beagle: tricolor — white base, brown head, black saddle, white-tipped tail
+  { id: 'luna', name: 'LUNA',   // lemon beagle: white base, warm caramel patches and head, white blaze, pink-red collar
     colors: {
-      main: '#f2ecdf', head: '#a96f3d', dark: '#d9d0bd', leg: '#f2ecdf', legDark: '#ddd4c1',
-      ear: '#7e5023', belly: '#fbf8f1', paw: '#e3dac8', collar: '#d8333b',
-      snout: '#f2ecdf', nose: '#1d1713', brow: null,
-      tail: '#3a2f24', tailTip: '#f6f1e6',
-      patches: [ { dx: -10, dy: -9, rx: 25, ry: 14, rot: 0.15 }, { dx: 16, dy: -12, rx: 13, ry: 9, rot: -0.3 } ],
-      patchColor: '#322a22',
+      main: '#f6f0e4', head: '#c08344', dark: '#e4d9c5', leg: '#f6f0e4', legDark: '#e7dcc8',
+      ear: '#a96f33', belly: '#fcf8f0', paw: '#eadfcb', collar: '#d8506a',
+      snout: '#f6f0e4', nose: '#3a2a20', brow: null,
+      tail: '#c08344', tailTip: '#f8f3e8',
+      patches: [ { dx: -10, dy: -9, rx: 24, ry: 14, rot: 0.12 }, { dx: 19, dy: -10, rx: 12, ry: 9, rot: -0.25 } ],
+      patchColor: '#cd9350',
       shape: { bodyLen: 72, bodyR: 19, legLen: 31, legW: 9.5, headR: 16, headUp: 18, snoutL: 24, snoutH: 13, earW: 9, earH: 23, tailL: 25, tailW: 6.5 }
     } },
-  { id: 'dolly', name: 'DOLLY',  // weimaraner: sleek silver-gray all over, amber eyes, liver nose
+  { id: 'dolly', name: 'DOLLY',  // weimaraner: warm taupe-brown body, lighter gray-taupe head and ears, pale eyes, red collar
     colors: {
-      main: '#9aa2a7', head: '#9aa2a7', dark: '#7c848b', leg: '#9aa2a7', legDark: '#838b92',
-      ear: '#868e94', belly: '#b2bac0', paw: '#8b9398', collar: '#8a5fd8',
-      snout: '#9aa2a7', nose: '#6f6259', brow: null, eyeWhite: '#e9c97e',
-      tail: '#7c848b',
+      main: '#84695a', head: '#b4a190', dark: '#6b5447', leg: '#84695a', legDark: '#715a4b',
+      ear: '#a8927e', belly: '#95796a', paw: '#7a6355', collar: '#d8333b',
+      snout: '#b4a190', nose: '#8a7165', brow: null, eyeWhite: '#cfe0da',
+      tail: '#6b5447',
       shape: { bodyLen: 80, bodyR: 17, legLen: 38, legW: 8, headR: 15, headUp: 24, snoutL: 29, snoutH: 12, earW: 8, earH: 20, tailL: 29, tailW: 5.5 }
     } }
 ];
 
 /* ===================== persistence ===================== */
 
-const SAVE_KEY = 'pup-dash-v1';
+const SAVE_KEY = 'zoomies-v1';
 function loadData() {
   try {
     const d = JSON.parse(localStorage.getItem(SAVE_KEY));
@@ -838,18 +838,19 @@ const crowd = [];
 let skyGrad = null;
 function drawSky() {
   if (!skyGrad) {
+    // golden hour
     skyGrad = ctx.createLinearGradient(0, 0, 0, HORIZON + 5);
-    skyGrad.addColorStop(0, '#79bfe8');
-    skyGrad.addColorStop(0.75, '#bfe3f4');
-    skyGrad.addColorStop(1, '#e4f3e9');
+    skyGrad.addColorStop(0, '#8fb4d8');
+    skyGrad.addColorStop(0.55, '#f2c794');
+    skyGrad.addColorStop(1, '#ffe3b0');
   }
   ctx.fillStyle = skyGrad;
   ctx.fillRect(0, 0, W, HORIZON + 5);
-  ctx.fillStyle = 'rgba(255,238,170,0.35)';
-  ctx.beginPath(); ctx.arc(448, 150, 52, 0, 7); ctx.fill();
-  ctx.fillStyle = '#ffe9a0';
-  ctx.beginPath(); ctx.arc(448, 150, 30, 0, 7); ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.fillStyle = 'rgba(255,205,120,0.4)';
+  ctx.beginPath(); ctx.arc(450, 218, 64, 0, 7); ctx.fill();
+  ctx.fillStyle = '#ffd98a';
+  ctx.beginPath(); ctx.arc(450, 218, 36, 0, 7); ctx.fill();
+  ctx.fillStyle = 'rgba(255,243,226,0.92)';
   for (const c of clouds) {
     let wx = ((c.x - G.camX * 0.12) % 2200 + 2200) % 2200 - 250;
     if (wx < -160 || wx > W + 160) continue;
@@ -863,7 +864,7 @@ function drawSky() {
 }
 
 function drawForest() {
-  ctx.fillStyle = '#4a7a42';
+  ctx.fillStyle = '#48723a';
   const sp = 64, par = 0.22;
   const i0 = Math.floor((G.camX * par - 90) / sp);
   for (let i = i0; i < i0 + Math.ceil(W / sp) + 3; i++) {
@@ -880,9 +881,9 @@ function drawForest() {
     const wx = j * sp2 + hash(j * 8.8) * 80 - G.camX * par2;
     const s = 0.7 + hash(j * 2.6) * 0.5;
     const baseY = 350;
-    ctx.fillStyle = '#7a5a38';
+    ctx.fillStyle = '#7d5836';
     rr(wx - 5 * s, baseY - 46 * s, 10 * s, 48 * s, 4 * s); ctx.fill();
-    ctx.fillStyle = hash(j * 4.4) > 0.5 ? '#5d9a4c' : '#549147';
+    ctx.fillStyle = hash(j * 4.4) > 0.5 ? '#5f9343' : '#56893d';
     ctx.beginPath();
     ctx.arc(wx, baseY - 62 * s, 26 * s, 0, 7);
     ctx.arc(wx - 18 * s, baseY - 46 * s, 19 * s, 0, 7);
@@ -893,17 +894,17 @@ function drawForest() {
 
 function drawGrassAndTrack() {
   // grass band with fence sits between horizon and track
-  ctx.fillStyle = '#6db257';
+  ctx.fillStyle = '#7cab4e';
   ctx.fillRect(0, HORIZON, W, TRACK_TOP - HORIZON);
   ctx.fillStyle = 'rgba(0,0,0,0.08)';
   ctx.fillRect(0, HORIZON, W, 5);
-  // track lanes
-  ctx.fillStyle = '#cf9059';
+  // track lanes, warm in the low sun
+  ctx.fillStyle = '#d28b54';
   ctx.fillRect(0, TRACK_TOP, W, TRACK_DIV - TRACK_TOP);
-  ctx.fillStyle = '#d99a61';
+  ctx.fillStyle = '#df9d64';
   ctx.fillRect(0, TRACK_DIV, W, TRACK_BOT - TRACK_DIV);
   // ground below the track stretches to the controls
-  ctx.fillStyle = '#4e7f41';
+  ctx.fillStyle = '#456f37';
   ctx.fillRect(0, TRACK_BOT, W, H - TRACK_BOT);
   ctx.fillStyle = 'rgba(0,0,0,0.1)';
   ctx.fillRect(0, TRACK_BOT, W, 6);
@@ -1360,7 +1361,7 @@ function drawControls() {
   const x = 18, y = ct + 74, w = 504, h = 148;
   G.ui.push({ id: 'paw', x, y, w, h });
   const flash = G.pawFlash.t > 0;
-  const hint = racing && G.raceT < 8 && !flash;
+  const hint = racing && G.raceT < 8 && !flash && !(zFull || p.zoomT > 0);
   ctx.save();
   if (flash) {
     const pop = 1 + 0.035 * (G.pawFlash.t / 0.1);
@@ -1395,15 +1396,34 @@ function drawControls() {
 function drawTitle() {
   const st = safeTop;
   const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, 'rgba(16,26,13,0.62)');
-  g.addColorStop(1, 'rgba(16,26,13,0.25)');
+  g.addColorStop(0, 'rgba(48,26,10,0.34)');
+  g.addColorStop(1, 'rgba(48,26,10,0.14)');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, W, H);
 
   const wob = Math.sin(G.animT * 1.6) * 2;
-  tx('LUNA vs DOLLY', 270, st + 56 + wob, 44, { c: '#ffd34e', stroke: '#5b3413', sw: 8 });
-  tx('PUP DASH!', 270, st + 108 + wob, 54, { c: '#fff', stroke: '#5b3413', sw: 9 });
-  tx('May the fastest floof win! 🐶', 270, st + 148, 16, { c: '#fff', stroke: 'rgba(40,25,10,0.7)', sw: 4 });
+  // gradient logo with a slight racing tilt
+  ctx.save();
+  ctx.translate(270, st + 72 + wob);
+  ctx.rotate(-0.04);
+  ctx.font = 'bold 74px ' + FONT;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = 16;
+  ctx.strokeStyle = '#4a2c10';
+  ctx.strokeText('ZOOMIES!', 0, 0);
+  const lgr = ctx.createLinearGradient(0, -36, 0, 36);
+  lgr.addColorStop(0, '#fff3a0');
+  lgr.addColorStop(0.5, '#ffd34e');
+  lgr.addColorStop(1, '#ff9d2e');
+  ctx.fillStyle = lgr;
+  ctx.fillText('ZOOMIES!', 0, 0);
+  ctx.restore();
+  ctx.save(); ctx.translate(34, st + 58 + wob); ctx.rotate(-0.3); tx('⚡', 0, 0, 34, { sw: 0 }); ctx.restore();
+  ctx.save(); ctx.translate(506, st + 86 + wob); ctx.rotate(0.3); tx('⚡', 0, 0, 34, { sw: 0 }); ctx.restore();
+  tx('LUNA vs DOLLY', 270, st + 122, 25, { c: '#fff', stroke: '#4a2c10', sw: 6 });
+  tx('two good girls · one finish line', 270, st + 152, 14, { c: '#fff', stroke: 'rgba(60,35,15,0.7)', sw: 3.5 });
 
   // character picker — two pups, the other one races you
   tx('PICK YOUR PUP — the other one races you', 270, st + 186, 13, { c: 'rgba(255,255,255,0.85)', stroke: 'rgba(0,0,0,0.5)', sw: 3 });
@@ -1479,7 +1499,7 @@ function drawTitle() {
   }
 
   button('mute', 484, st + 10, 44, 44, G.muted ? '🔇' : '🔊', { bg: 'rgba(20,16,10,0.45)', hotBg: 'rgba(20,16,10,0.7)', r: 12, size: 19, pad: 8 });
-  tx('v1.0', 528, H - safeBottom - 10, 10, { c: 'rgba(255,255,255,0.4)', sw: 0, align: 'right' });
+  tx('v1.1', 528, H - safeBottom - 10, 10, { c: 'rgba(255,255,255,0.4)', sw: 0, align: 'right' });
 }
 
 function drawCountdown() {
@@ -1501,7 +1521,7 @@ function drawCountdown() {
     });
     ctx.restore();
   }
-  tx('get ready to dash…', 270, TRACK_BOT + 28, 18, { c: 'rgba(255,255,255,0.85)', stroke: 'rgba(0,0,0,0.5)', sw: 3 });
+  tx('ready for zoomies…', 270, TRACK_BOT + 28, 18, { c: 'rgba(255,255,255,0.85)', stroke: 'rgba(0,0,0,0.5)', sw: 3 });
 }
 
 function drawGoFlash(fdt) {
@@ -1512,9 +1532,9 @@ function drawGoFlash(fdt) {
   ctx.save();
   ctx.translate(270, 470);
   ctx.scale(scale, scale);
-  tx('GO!!', 0, 0, 120, {
+  tx('ZOOM!!', 0, 0, 100, {
     c: 'rgba(255,211,78,' + f.toFixed(2) + ')',
-    stroke: 'rgba(60,35,10,' + (f * 0.9).toFixed(2) + ')', sw: 13
+    stroke: 'rgba(60,35,10,' + (f * 0.9).toFixed(2) + ')', sw: 12
   });
   ctx.restore();
 }
