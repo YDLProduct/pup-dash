@@ -165,19 +165,19 @@ const ROSTER = [
   { id: 'luna', name: 'LUNA',   // lemon beagle: white base, warm caramel patches and head, white blaze, pink-red collar
     colors: {
       main: '#f6f0e4', head: '#c08344', dark: '#e4d9c5', leg: '#f6f0e4', legDark: '#e7dcc8',
-      ear: '#a96f33', belly: '#fcf8f0', paw: '#eadfcb', collar: '#d8506a',
+      ear: '#a96f33', belly: '#fcf8f0', paw: '#eadfcb', collar: '#d8333b',
       snout: '#f6f0e4', nose: '#3a2a20', brow: null,
       tail: '#c08344', tailTip: '#f8f3e8',
       patches: [ { dx: -10, dy: -9, rx: 24, ry: 14, rot: 0.12 }, { dx: 19, dy: -10, rx: 12, ry: 9, rot: -0.25 } ],
       patchColor: '#cd9350',
       shape: { bodyLen: 72, bodyR: 19, legLen: 31, legW: 9.5, headR: 16, headUp: 18, snoutL: 24, snoutH: 13, earW: 9, earH: 23, tailL: 25, tailW: 6.5 }
     } },
-  { id: 'dolly', name: 'DOLLY',  // weimaraner: warm taupe-brown body, lighter gray-taupe head and ears, pale eyes, red collar
+  { id: 'dolly', name: 'DOLLY',  // weimaraner: uniform gray-taupe coat, pale eyes, pink collar
     colors: {
-      main: '#84695a', head: '#b4a190', dark: '#6b5447', leg: '#84695a', legDark: '#715a4b',
-      ear: '#a8927e', belly: '#95796a', paw: '#7a6355', collar: '#d8333b',
+      main: '#b4a190', head: '#b4a190', dark: '#998771', leg: '#b4a190', legDark: '#a08e7a',
+      ear: '#a8927e', belly: '#c3b3a2', paw: '#a18f7b', collar: '#ef5fae',
       snout: '#b4a190', nose: '#8a7165', brow: null, eyeWhite: '#cfe0da',
-      tail: '#6b5447',
+      tail: '#998771',
       shape: { bodyLen: 80, bodyR: 17, legLen: 38, legW: 8, headR: 15, headUp: 24, snoutL: 29, snoutH: 12, earW: 8, earH: 20, tailL: 29, tailW: 5.5 }
     } }
 ];
@@ -1499,7 +1499,7 @@ function drawTitle() {
   }
 
   button('mute', 484, st + 10, 44, 44, G.muted ? '🔇' : '🔊', { bg: 'rgba(20,16,10,0.45)', hotBg: 'rgba(20,16,10,0.7)', r: 12, size: 19, pad: 8 });
-  tx('v1.1', 528, H - safeBottom - 10, 10, { c: 'rgba(255,255,255,0.4)', sw: 0, align: 'right' });
+  tx('v1.2', 528, H - safeBottom - 10, 10, { c: 'rgba(255,255,255,0.4)', sw: 0, align: 'right' });
 }
 
 function drawCountdown() {
